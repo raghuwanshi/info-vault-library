@@ -9,7 +9,7 @@ public class CryptoParams implements java.io.Serializable
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public static String KEY_ALGORITHM = "PBEWITHSHA256AND192BITAES";//PBKDF2WithHmacSHA1";
+	public static String KEY_ALGORITHM = "PBKDF2WithHmacSHA1";
 	public static String CIPHER_ALGORITHM = "AES/CBC/PKCS5Padding";
 	
 	public int keySize = 256;//Cipher.getMaxAllowedKeyLength(CIPHER_ALGORITHM);
