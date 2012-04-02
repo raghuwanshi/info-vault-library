@@ -1,7 +1,5 @@
 package in.net.pragya.infovault.library;
 
-import java.io.IOException;
-
 public class CryptoParams implements java.io.Serializable
 {
 	/**
@@ -22,7 +20,8 @@ public class CryptoParams implements java.io.Serializable
 	{
 	}
 
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+/*
+  	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
 		out.writeUTF(KEY_ALGORITHM);
 		out.writeUTF(CIPHER_ALGORITHM);
@@ -41,5 +40,5 @@ public class CryptoParams implements java.io.Serializable
 		in.read(salt);
 		in.read(iv);
 	}
-
+*/
 }

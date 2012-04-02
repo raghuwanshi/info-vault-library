@@ -88,7 +88,6 @@ public class CryptoActivity extends Activity
 						}
 						finally
 						{
-							cryptoParams = new CryptoParams();
 							if(bis != null)
 								bis.close();
 							if(in != null)
@@ -98,6 +97,7 @@ public class CryptoActivity extends Activity
 					else
 					{
 						cryptoParams = new CryptoParams();
+						cryptoParams.iv = new byte[]{0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,0};
 						rawData = inText;
 					}
 					

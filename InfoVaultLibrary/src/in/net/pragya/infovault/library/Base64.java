@@ -9,8 +9,15 @@ public class Base64
 	public static byte[] decode(final String input)
 	{
 		byte[] inBytes = input.getBytes();
-		byte[] outBytes = new byte[(inBytes.length / 4 * 3)
-		                           + ((inBytes.length % 4 == 0) ? 0 : 3)];
+		
+		int outSize = (inBytes.length / 4 * 3) + ((inBytes.length % 4 == 0) ? 0 : 3);
+		if(inBytes[inBytes.length-2] == '=')
+			outSize--;
+		if(inBytes[inBytes.length-1] == '=')
+			outSize--;
+		byte[] outBytes = new byte[outSize];
+		
+		int padding = 0;
 		for(int i = 0; i < inBytes.length; i += 4)
 		{
 			int temp = (base64Charset.indexOf(inBytes[i], 0) & 0x0000003F);
@@ -19,9 +26,11 @@ public class Base64
 				temp <<= 6;
 				if((i + j) < inBytes.length && inBytes[i + j] != '=')
 					temp |= (base64Charset.indexOf(inBytes[i + j], 0) & 0x0000003F);
+				else
+					padding++;
 			}
 				
-			for(int k = i / 4 * 3, count = 0; count < 3; count++)
+			for(int k = i / 4 * 3, count = 0; count < 3 - padding; count++)
 				outBytes[k + count] = (byte)((temp >>> ((2 - count) * 8)) & 0x000000FF);
 		}
 		return outBytes;
