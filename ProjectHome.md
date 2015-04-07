@@ -1,0 +1,1 @@
+This is a java library for android which can be used by any application to provide encryption/decryption functionalities with a feature of keeping two factor pass-phrase, one of which can be remembered and the other can be kept as printed QR code.
